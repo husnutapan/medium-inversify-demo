@@ -1,0 +1,3 @@
+interface DepartmentRepository {
+    getDeparmentName(): string;
+}
