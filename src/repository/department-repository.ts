@@ -1,3 +1,7 @@
 interface DepartmentRepository {
-    getDeparmentName(): string;
+    getDepartmentName(): string;
+
+    canExecute(departmentName: string): boolean;
+
+    execute(): any[];
 }

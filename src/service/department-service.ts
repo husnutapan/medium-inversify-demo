@@ -9,10 +9,24 @@ export class DepartmentService {
     }
 
     public getDepartmentNames(): string[] {
-        let deparmentList = [];
+        let departmentList = [];
         this.departmentRepository.forEach(department => {
-            deparmentList.push(department.getDeparmentName());
+            departmentList.push(department.getDepartmentName());
         })
-        return deparmentList;
+        return departmentList;
+    }
+
+
+    public executeAccordingToStrategy(departmentName: string): any[] {
+
+        let repositories = this.departmentRepository.filter(function (departmentRepository: DepartmentRepository) {
+            return departmentRepository.canExecute(departmentName);
+        });
+
+        if (repositories.length != 1) {
+            throw new Error("strategy found in different quantity.")
+        }
+
+        return repositories[0].execute();
     }
 }

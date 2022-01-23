@@ -7,6 +7,8 @@ const employeeService = container.get<EmployeeService>(EmployeeService);
 
 const departmentService = container.get<DepartmentService>(DepartmentService);
 
+departmentService.executeAccordingToStrategy("HumanResources").forEach(e => console.log(e));
+
 console.log(employeeService.getEmployees());
 
 console.log(departmentService.getDepartmentNames());
